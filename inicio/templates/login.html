@@ -1,0 +1,44 @@
+{% load static %}
+{% include 'header.html' %}
+<!DOCTYPE html>
+<html>
+<body>
+  <h2>Login de Usuarios</h2>
+
+<form action="{% url 'login' %}" method="post">
+  {% csrf_token %}
+
+  <label>Usuario:</label><br>
+  <input type="text" placeholder="ingrese ususario" name="username" required><br><br>
+
+  <label>Contraseña:</label><br>
+  <input type="password" placeholder="ingrese contraseña" name="password" required><br><br>
+
+  <button onclick="aceptar()">Aceptar</button>
+  <button onclick="regresar()">Regresar</button>
+
+  <p id="mensaje"></p>
+
+  <script>
+    function aceptar() {
+      var u = document.getElementById("usuario").value;
+      var p = document.getElementById("contrasena").value;
+      if (u === "" || p === "") {
+        document.getElementById("mensaje").innerText = "Completa todos los campos.";
+      } else {
+        document.getElementById("mensaje").innerText = "Bienvenido, " + u;
+      }
+    }
+
+    function regresar() {
+      document.getElementById("usuario").value = "";
+      document.getElementById("contrasena").value = "";
+      document.getElementById("mensaje").innerText = "";
+    }
+  </script>
+
+</body>
+</html>
+</form>
+
+{% include 'footer.html'%}

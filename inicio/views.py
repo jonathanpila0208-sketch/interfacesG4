@@ -1,0 +1,37 @@
+from django.http import HttpResponse
+from django.shortcuts import render
+from django.contrib.auth import authenticate, login as auth_login
+
+def hola (request):
+    return render(request,'index.html')
+
+def contact(request):
+    return render(request, 'contact.html')
+
+def about(request):
+    return render(request, 'about.html')
+
+def servicios(request):
+    return render(request, 'servicios.html')
+
+def booking(request):
+    return render(request, 'booking.html')
+
+def tecnicos(request):
+    return render(request, 'tecnicos.html')
+
+def testimonio(request):
+    return render(request, 'testimonio.html')
+
+def login_view(request):
+    mensaje=''
+    if request.method=='POST':
+        username=request.POST.get('username')
+        password=request.POST.get('password')
+        user = authenticate(request,username=username, password=password)
+
+        if user is not None:
+            auth_login(request, user)
+        else:
+            mensaje='Usuario o contraseña incorrectos'
+    return render(request,'login.html',{'mensaje':mensaje})
