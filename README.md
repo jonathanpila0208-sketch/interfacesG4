@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -35,20 +34,3 @@
 
 </body>
 </html>
-=======
-{% load static %}
-{% include 'header.html' %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-</head>
-<body>
-    <h4>login exitoso</h4>
-    <h5>Bienvenido al sistema</h5>
-</body>
-</html>
-{% include 'header.html' %}
->>>>>>> f19b43228dddcf13b8892ae2e432878c07631e2d

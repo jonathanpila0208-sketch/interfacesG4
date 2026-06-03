@@ -3,42 +3,58 @@
 <!DOCTYPE html>
 <html>
 <body>
-  <h2>Login de Usuarios</h2>
 
-<form action="{% url 'login' %}" method="post">
-  {% csrf_token %}
+<div style="min-height: 500px; display: flex; align-items: center; justify-content: center; padding: 2rem 0;">
+  <div style="background: white; border: 0.5px solid #ddd; border-radius: 12px; padding: 2.5rem 2rem; width: 100%; max-width: 380px;">
 
-  <label>Usuario:</label><br>
-  <input type="text" placeholder="ingrese ususario" name="username" required><br><br>
+    <div style="text-align: center; margin-bottom: 2rem;">
+      <div style="width:56px; height:56px; border-radius:50%; background:#EEEDFE; display:flex; align-items:center; justify-content:center; margin:0 auto 1rem;">
+        🚗
+      </div>
+      <h2 style="margin:0;">Login de Usuarios</h2>
+      <p style="color:gray; font-size:14px; margin:4px 0 0;">Inicia sesión en tu cuenta</p>
+    </div>
 
-  <label>Contraseña:</label><br>
-  <input type="password" placeholder="ingrese contraseña" name="password" required><br><br>
+    <form action="{% url 'login' %}" method="post">
+      {% csrf_token %}
 
-  <button onclick="aceptar()">Aceptar</button>
-  <button onclick="regresar()">Regresar</button>
+      <label>Usuario:</label><br>
+      <input type="text" placeholder="ingrese usuario" name="username" required
+        style="width:100%; padding:9px 12px; margin:6px 0 1rem; box-sizing:border-box; border-radius:8px;"><br>
 
-  <p id="mensaje"></p>
+      <label>Contraseña:</label><br>
+      <input type="password" placeholder="ingrese contraseña" name="password" required
+        style="width:100%; padding:9px 12px; margin:6px 0 1.5rem; box-sizing:border-box; border-radius:8px;"><br>
 
-  <script>
-    function aceptar() {
-      var u = document.getElementById("usuario").value;
-      var p = document.getElementById("contrasena").value;
-      if (u === "" || p === "") {
-        document.getElementById("mensaje").innerText = "Completa todos los campos.";
-      } else {
-        document.getElementById("mensaje").innerText = "Bienvenido, " + u;
-      }
-    }
+      <div style="display:flex; gap:10px;">
+        <button onclick="regresar()" style="flex:1; padding:10px; border-radius:8px; cursor:pointer;">Regresar</button>
+        <button onclick="aceptar()" style="flex:2; padding:10px; border-radius:8px; cursor:pointer; background:#534AB7; color:white; border:none;">Aceptar</button>
+      </div>
 
-    function regresar() {
-      document.getElementById("usuario").value = "";
-      document.getElementById("contrasena").value = "";
-      document.getElementById("mensaje").innerText = "";
-    }
-  </script>
+      <p id="mensaje" style="margin-top:1rem; font-size:14px; color:red;"></p>
+
+      <script>
+        function aceptar() {
+          var u = document.getElementById("usuario").value;
+          var p = document.getElementById("contrasena").value;
+          if (u === "" || p === "") {
+            document.getElementById("mensaje").innerText = "Completa todos los campos.";
+          } else {
+            document.getElementById("mensaje").innerText = "Bienvenido, " + u;
+          }
+        }
+
+        function regresar() {
+          document.getElementById("usuario").value = "";
+          document.getElementById("contrasena").value = "";
+          document.getElementById("mensaje").innerText = "";
+        }
+      </script>
+
+    </form>
+  </div>
+</div>
 
 </body>
 </html>
-</form>
-
-{% include 'footer.html'%}
+{% include 'footer.html' %}
