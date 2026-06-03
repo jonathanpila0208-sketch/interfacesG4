@@ -16,7 +16,7 @@
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@600;700&family=Ubuntu:wght@400;500&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@600;700&family=Ubuntu:wght@400;500&display=swap" rel="stylesheet">
 
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
@@ -43,7 +43,6 @@
     </div>
     <!-- Spinner End -->
 
-
     <!-- Topbar Start -->
     <div class="container-fluid bg-light p-0">
         <div class="row gx-0 d-none d-lg-flex">
@@ -60,7 +59,7 @@
             <div class="col-lg-5 px-5 text-end">
                 <div class="h-100 d-inline-flex align-items-center py-3 me-4">
                     <small class="fa fa-phone-alt text-primary me-2"></small>
-                    <small>+593 96 183 0614</small>
+                    <small>0996258155</small>
                 </div>
                 <div class="h-100 d-inline-flex align-items-center">
                     <a class="btn btn-sm-square bg-white text-primary me-1" href=""><i class="fab fa-facebook-f"></i></a>
@@ -73,7 +72,6 @@
     </div>
     <!-- Topbar End -->
 
-
     <!-- Navbar Start -->
     <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
         <a href="{% static 'public/index.html' %}" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
@@ -85,20 +83,25 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto p-4 p-lg-0">
                 <a href="{% url 'index' %}" class="nav-item nav-link active">Casa</a>
-                <a href="{% url 'about' %}" class="nav-item nav-link">Nosotros</a>
+                <a href="{% url 'about' %}" class="nav-item nav-link">Sobre Nosotros</a>
                 <a href="{% url 'servicios' %}" class="nav-item nav-link">Servicios</a>
+
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Paginas</a>
+
                     <div class="dropdown-menu fade-up m-0">
-                        <a href="{% url 'booking' %}" class="dropdown-item">Reserva</a>
+                        <a href="{% url 'booking' %}" class="dropdown-item">Reservas</a>
                         <a href="{% url 'tecnicos' %}" class="dropdown-item">Técnicos</a>
                         <a href="{% url 'testimonio' %}" class="dropdown-item">Testimonial</a>
-                        
                     </div>
                 </div>
+
                 <a href="{% url 'contact' %}" class="nav-item nav-link">Contacto</a>
             </div>
-            <a href="{% url 'login' %}" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">Iniciar Secion<i class="fa fa-arrow-right ms-3"></i></a>
+
+            <a href="{% url 'login' %}" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">
+                Iniciar Secion<i class="fa fa-arrow-right ms-3"></i>
+            </a>
         </div>
     </nav>
     <!-- Navbar End -->
