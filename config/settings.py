@@ -116,11 +116,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-<<<<<<< HEAD
-STATICFILES_DIRS=[
-=======
 STATICFILES_DIRS = [
->>>>>>> f519d6d3d059d470342fdbfd7a85ae4354a12c09
     BASE_DIR / 'inicio' / 'static' / 'public',
 ]
 # Default primary key field type
