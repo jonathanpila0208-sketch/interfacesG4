@@ -123,6 +123,46 @@
     transition: .5s;
 }
 
+.topbar-elite {
+    background: linear-gradient(90deg, #f5f7fb 0%, #eef3ff 100%);
+    border-bottom: 1px solid rgba(11, 33, 84, 0.08);
+}
+
+.topbar-hotline {
+    font-weight: 700;
+    color: var(--secondary);
+}
+
+.topbar-social {
+    background: #FFFFFF;
+    color: var(--secondary);
+    border: 1px solid rgba(11, 33, 84, 0.15);
+    transition: all .25s ease;
+}
+
+.topbar-social:hover {
+    background: var(--secondary);
+    color: #FFFFFF;
+    border-color: var(--secondary);
+}
+
+.main-navbar {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.brand-title {
+    letter-spacing: 0.4px;
+}
+
+.nav-cta-btn {
+    background: linear-gradient(135deg, var(--primary) 0%, #ef3f22 100%);
+    border: none;
+}
+
+.nav-cta-btn:hover {
+    filter: brightness(0.95);
+}
+
 @media (min-width: 992px) {
     .navbar .nav-item .dropdown-menu {
         display: block;
