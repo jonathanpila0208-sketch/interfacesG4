@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bienvenido</title>
+</head>
+<body>
+
+    <h2>¡Bienvenido {{user.username}}!</h2>
+
+    <p>
+        Para terminar, llena los siguientes datos personales:
+    </p>
+
+    <form>
+
+        <label>Nombre:</label><br>
+        <input type="text" placeholder="Ingrese su nombre"><br><br>
+
+        <label>Correo:</label><br>
+        <input type="email" placeholder="Ingrese su correo"><br><br>
+
+        <label>Celular:</label><br>
+        <input type="tel" placeholder="Ingrese su celular"><br><br>
+
+        <label>Cédula:</label><br>
+        <input type="text" placeholder="Ingrese su cédula"><br><br>
+
+        <button type="submit">Registrar</button>
+        <button type="button">Más tarde</button>
+
+    </form>
+
+</body>
+</html>
