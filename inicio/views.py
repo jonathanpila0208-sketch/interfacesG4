@@ -1,5 +1,5 @@
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.contrib.auth import authenticate, login as auth_login
 
 def hola (request):
@@ -32,6 +32,10 @@ def login_view(request):
 
         if user is not None:
             auth_login(request, user)
+            return redirect ('dashboard')
         else:
             mensaje='Usuario o contraseña incorrectos'
     return render(request,'login.html',{'mensaje':mensaje})
+
+def dashboard(request):
+    return render (request, 'dashboard.html')

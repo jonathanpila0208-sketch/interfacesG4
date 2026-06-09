@@ -12,5 +12,7 @@ urlpatterns= [
     path('booking/', views.booking, name='booking'),
     path('tecnicos/', views.tecnicos, name='tecnicos'),
     path('testimonio/', views.testimonio, name='testimonio'),
-    path('login/', views.login_view, name='login')
+    path('login/', views.login_view, name='login'),
+    path('dashboard/', views.dashboard, name='dashboard')
+
 ]
