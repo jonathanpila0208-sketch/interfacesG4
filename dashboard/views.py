@@ -8,4 +8,7 @@ def informe(request):
     return render(request, 'dashboard/informe.html')
 
 def listar_usuarios(request):
+    contexto={
+        'usuarios': usuarios
+    }
     return render (request, 'dashboard/listar_usurios.html')# siempre se va a usar dashboard/
