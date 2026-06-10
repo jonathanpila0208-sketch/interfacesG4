@@ -1,0 +1,117 @@
+{% include 'dashboard/header.html' %}
+
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="row">
+            <div class="col-lg-6 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Line chart</h4>
+                        <canvas id="lineChart"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Bar chart</h4>
+                        <canvas id="barChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Area chart</h4>
+                        <canvas id="areaChart"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Doughnut chart</h4>
+                        <canvas id="doughnutChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6 grid-margin grid-margin-lg-0 stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Pie chart</h4>
+                        <canvas id="pieChart"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 grid-margin grid-margin-lg-0 stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Scatter chart</h4>
+                        <canvas id="scatterChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    // Line Chart
+    new Chart(document.getElementById('lineChart'), {
+        type: 'line',
+        data: {
+            labels: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun'],
+            datasets: [{ label: 'Ventas', data: [12, 19, 15, 17, 14, 20], borderColor: '#007bff', fill: false }]
+        }
+    });
+    // Bar Chart
+    new Chart(document.getElementById('barChart'), {
+        type: 'bar',
+        data: {
+            labels: ['Rojo', 'Azul', 'Amarillo'],
+            datasets: [{ label: 'Cantidad', data: [15, 20, 10], backgroundColor: ['#dc3545', '#007bff', '#ffc107'] }]
+        }
+    });
+    // Area Chart
+    new Chart(document.getElementById('areaChart'), {
+        type: 'line',
+        data: {
+            labels: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun'],
+            datasets: [{ label: 'Ventas', data: [5, 10, 8, 15, 12, 18], borderColor: '#28a745', fill: true }]
+        }
+    });
+    // Doughnut Chart
+    new Chart(document.getElementById('doughnutChart'), {
+        type: 'doughnut',
+        data: {
+            labels: ['Rojo', 'Azul', 'Amarillo'],
+            datasets: [{ data: [15, 20, 10], backgroundColor: ['#dc3545', '#007bff', '#ffc107'] }]
+        }
+    });
+    // Pie Chart
+    new Chart(document.getElementById('pieChart'), {
+        type: 'pie',
+        data: {
+            labels: ['Rojo', 'Azul', 'Amarillo'],
+            datasets: [{ data: [15, 20, 10], backgroundColor: ['#dc3545', '#007bff', '#ffc107'] }]
+        }
+    });
+    // Scatter Chart
+    new Chart(document.getElementById('scatterChart'), {
+        type: 'scatter',
+        data: {
+            datasets: [{
+                label: 'Datos',
+                data: [{x: 1, y: 12}, {x: 2, y: 19}, {x: 3, y: 15}, {x: 4, y: 17}, {x: 5, y: 14}],
+                backgroundColor: '#007bff'
+            }]
+        }
+    });
+</script>
+
+{% include 'dashboard/footer.html' %}
