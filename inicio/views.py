@@ -38,4 +38,4 @@ def login_view(request):
     return render(request,'login.html',{'mensaje':mensaje})
 
 def dashboard(request):
-    return render (request, 'dashboard.html')
+    return render(request, 'dashboard/dashboard.html')  # ← agrega dashboard/
