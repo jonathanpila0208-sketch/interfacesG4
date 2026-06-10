@@ -8,9 +8,9 @@ def dashboard(request):
 def informe(request):
     return render(request, 'dashboard/informe.html')
 
-def listar_usuario(request):
+def listar_usuarios(request):
     usuarios = User.objects.all()
     contexto = {
         'usuarios': usuarios
     }
-    return render (request, 'private/listar_usuarios.html',contexto)# siempre se va a usar dashboard/
+    return render (request, 'dashboard/listar_usuarios.html',contexto)# siempre se va a usar dashboard/
