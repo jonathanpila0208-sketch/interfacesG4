@@ -13,4 +13,4 @@ def listar_usuarios(request):
     contexto = {
         'usuarios': usuarios
     }
-    return render (request, 'dashboard/listar_usurios.html',contexto)# siempre se va a usar dashboard/
+    return render (request, 'dashboard/listar_usuarios.html',contexto)# siempre se va a usar dashboard/
