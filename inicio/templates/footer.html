@@ -43,8 +43,6 @@
                 <div class="row">
                     <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
                         &copy; <a class="border-bottom" href="#">Your Site Name</a>, All Right Reserved.
-
-                        <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
                         Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a>
                         <br>Distributed By: <a class="border-bottom" href="https://themewagon.com" target="_blank">ThemeWagon</a>
                     </div>
@@ -53,7 +51,7 @@
                             <a href="">INICIO</a>
                             <a href="">LOGIN</a>
                             <a href="">AYUDA</a>
-                            <a href=""¿>PREGUNTAS?</a> 
+                            <a href="">¿PREGUNTAS?</a>
                         </div>
                     </div>
                 </div>
@@ -81,6 +79,17 @@
 
     <!-- Template Javascript -->
     <script src="{% static 'public/js/main.js' %}"></script>
+
+    <!-- Spinner Fallback: oculta el spinner si main.js falla o tarda demasiado -->
+    <script>
+        setTimeout(function () {
+            var spinner = document.getElementById('spinner');
+            if (spinner && spinner.classList.contains('show')) {
+                spinner.classList.remove('show');
+            }
+        }, 3000);
+    </script>
+
 </body>
 
 </html>
