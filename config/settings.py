@@ -119,7 +119,11 @@ STATIC_URL = 'static/'
 
 STATICFILES_DIRS = [
     BASE_DIR / 'inicio' / 'static' / 'public',
+    BASE_DIR / 'dashboard' / 'static' / 'private',  # ← Mantén esta si la necesitas
+
 ]
+
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
