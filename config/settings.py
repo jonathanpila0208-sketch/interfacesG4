@@ -1,3 +1,4 @@
+# Django Configuration Settings
 """
 Django settings for config project.
 
