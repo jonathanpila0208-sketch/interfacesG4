@@ -31,6 +31,14 @@
         <button onclick="aceptar()" style="flex:2; padding:10px; border-radius:8px; cursor:pointer; background:#534AB7; color:white; border:none;">Aceptar</button>
       </div>
 
+      <!-- Enlace de recuperación de contraseña agregado -->
+      <div style="text-align:right; margin-top:15px;">
+        <a href="{% url 'recuperar' %}" 
+           style="font-size:13px; color:#534AB7; text-decoration:none;">
+          ¿Olvidaste tu contraseña?
+        </a>
+      </div>
+
       <p id="mensaje" style="margin-top:1rem; font-size:14px; color:red;"></p>
 
       <script>
