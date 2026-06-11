@@ -13,3 +13,6 @@ def listar_usuarios(request):
         'usuarios': usuarios
     }
     return render(request, 'private/listar_usuarios.html', contexto)
+
+def iconos(request):
+    return render(request, 'private/iconos.html')
