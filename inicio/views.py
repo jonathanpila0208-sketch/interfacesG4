@@ -39,3 +39,6 @@ def login_view(request):
 
 def dashboard(request):
     return render(request, 'private/dashboard.html') # ← agrega dashboard/
+
+def recuperar(request):
+    return render(request, 'recuperar.html')
