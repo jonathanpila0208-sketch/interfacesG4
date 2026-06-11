@@ -1,0 +1,53 @@
+{% load static %}
+{% include 'private/header.html' %}
+<div class="container mt-4">
+
+    <div class="card shadow p-4">
+        <h1>Bienvenido al Sistema</h1>
+        <p>
+            Administra tus vehículos y consulta tu información fácilmente.
+        </p>
+
+        <hr>
+
+        <h3>Opciones disponibles</h3>
+
+        <div class="row">
+
+            <div class="col-md-4">
+                <div class="card p-3 text-center">
+                    <h4>🚗 Vehículos</h4>
+                    <p>Consulta y registra vehículos.</p>
+                    <button class="btn btn-primary">
+                        Entrar
+                    </button>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card p-3 text-center">
+                    <h4>👤 Perfil</h4>
+                    <p>Gestiona los datos del usuario.</p>
+                    <button class="btn btn-success">
+                        Ver perfil
+                    </button>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card p-3 text-center">
+                    <h4>🔐 Seguridad</h4>
+                    <p>Cambiar contraseña o recuperar cuenta.</p>
+                    <button class="btn btn-warning">
+                        Configurar
+                    </button>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% include 'private/footer.html' %}
