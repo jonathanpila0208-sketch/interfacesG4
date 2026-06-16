@@ -17,5 +17,3 @@ def listar_usuarios(request):
 def iconos(request):
     return render(request, 'private/iconos.html')
 
-def iconos(request):
-    return render(request, 'private/informe.html')
