@@ -46,3 +46,8 @@ def crear_usuarios(request):
         return redirect (request, "pivate/listar_usuarios.html")
         return render (request, "pivate/crear_usuarios.html")
     
+def eliminar_usuario(request, id):
+    usuario=User.objects.fet(id=id)
+    usuario.delete()
+    messages.success(request, "Usuario eliminado")
+    return redirect("listar_usuarios")
