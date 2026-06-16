@@ -137,5 +137,5 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
-EMAIL_HOST_USER = 'jesus.montoya3083@utc.edu.ec'
+EMAIL_HOST_USER = 'jonathan.pila0208@utc.edu.ec'
 EMAIL_HOST_PASSWORD = 'tu_contraseña_de_aplicacion'
