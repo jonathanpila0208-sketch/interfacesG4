@@ -39,6 +39,7 @@ def eliminar_usuario(request, id):
     return redirect("listar_usuarios")
 
 def editar_usuario(request, id):#metodo editar
+    usuario=User.objects.get(id=id)
     if request.method=='POST':
         username = request.POST.get("")
         email = request.POST.get("")
