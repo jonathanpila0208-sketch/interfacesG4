@@ -31,7 +31,7 @@ html
                 <td>{{ usuario.username }}</td>
                 <td>{{ usuario.email }}</td>
                 <td>
-                    <a href="" class="btn btn-sm btn-warning rounded-pill">Editar</a>
+                    <a href="{% url 'editar_usuario' usuario.id %}" class="btn btn-sm btn-warning rounded-pill">Editar</a>
                     <a href="{% url 'eliminar_usuario' usuario.id %}" class="btn btn-sm btn-danger rounded-pill" onclick="return confirm('¿Estás seguro de eliminar este usuario?');">Eliminar</a>
                 </td>
             </tr>
