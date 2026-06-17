@@ -66,5 +66,6 @@ def editar_usuario(request, id):#metodo editar
     contexto={
         "usuario":usuario
     }
+    return render(request,"private/editar_usuario.html",contexto)
 
 
