@@ -2,35 +2,35 @@
 {% include 'private/header.html' %}
 
 <div class="main-panel">
-  <div class="content-wrapper">
-    <div class="container mt-4">
-        <h1 class="mb-4">Editar Usuario</h1>
-        
-        {% if messages %}
+    <div class="content-wrapper">
+        <div class="container mt-4">
+            <h1 class="mb-4">Editar Usuario</h1>
+
+            {% if messages %}
             {% for message in messages %}
             <div class="alert alert-danger">{{ message }}</div>
             {% endfor %}
-        {% endif %}
+            {% endif %}
 
-        <form action="" method="post">
-            {% csrf_token %}
-            <div class="form-group mb-3">
-                <label for="username">Nombre del usuario</label>
-                <input type="text" name="username" class="form-control" value="{{ usuario.username }}" required>
-            </div>
-            <div class="form-group mb-3">
-                <label for="email">Correo electrónico</label>
-                <input type="email" name="email" class="form-control" value="{{ usuario.email }}" required>
-            </div>
-            <div class="form-group mb-3">
-                <label for="password">Nueva contraseña (dejar vacío para no cambiar)</label>
-                <input type="password" name="password" class="form-control">
-            </div>
-            <button class="btn btn-warning rounded-pill">GUARDAR</button>
-            <a href="{% url 'listar_usuarios' %}" class="btn btn-danger rounded-pill">CANCELAR</a>
-        </form>
+            <form action="" method="post">
+                {% csrf_token %}
+                <div class="form-group mb-3">
+                    <label for="username">Nuevo nombre</label>
+                    <input type="text" name="username_edit" class="form-control" value="{{ usuario.username }}" required>
+                </div>
+                <div class="form-group mb-3">
+                    <label for="email">Nuevo correo electrónico</label>
+                    <input type="email" name="email_edit" class="form-control" value="{{ usuario.email }}" required>
+                </div>
+                <div class="form-group mb-3">
+                    <label for="password">Nueva contraseña (dejar vacío para no cambiar)</label>
+                    <input type="password" name="password_edit" class="form-control">
+                </div>
+                <button class="btn btn-warning rounded-pill">GUARDAR</button>
+                <a href="{% url 'listar_usuarios' %}" class="btn btn-danger rounded-pill">CANCELAR</a>
+            </form>
+        </div>
     </div>
-  </div>
 </div>
 
 {% include 'private/footer.html' %}
