@@ -54,3 +54,11 @@ def editar_usuario(request, id):#metodo editar
         if User.objects.filter(email=email).exclude(id=id).exists():
             messages.error(request, "El email ya existe")
             return render(request, "private/editar_usuario.html",{"usuario":usuario})
+        
+        #actualizar datos
+        usuario.username=username
+        usuario.email=email
+        usuario.password=password
+
+        usuario.save()
+
