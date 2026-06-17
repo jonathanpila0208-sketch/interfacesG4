@@ -60,6 +60,10 @@ def editar_usuario(request, id):#metodo editar
         usuario.email=email
         usuario.set_password(password)
 
+        usuario.username = username
+        usuario.email = email
+        if password:
+            usuario.set_password(password)
         usuario.save()
         messages.success(request, "El registro se ha actualizado correctamente")
         return redirect("listar_usuarios")
@@ -69,3 +73,4 @@ def editar_usuario(request, id):#metodo editar
     return render(request,"private/editar_usuario.html",contexto)
 
 
+    return render(request, "private/editar_usuario.html", {"usuario": usuario})
