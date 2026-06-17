@@ -37,3 +37,5 @@ def eliminar_usuario(request, id):
     usuario.delete()
     messages.success(request, "Usuario eliminado")
     return redirect("listar_usuarios")
+
+def editar_usuario(request, id):#metodo editar
