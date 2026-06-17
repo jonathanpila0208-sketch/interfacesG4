@@ -61,4 +61,10 @@ def editar_usuario(request, id):#metodo editar
         usuario.password=password
 
         usuario.save()
+        messages.success(request, "El registro se ha actualizado correctamente")
+        return redirect("listar_usuarios")
+    contexto={
+        "usuario":usuario
+    }
+
 
