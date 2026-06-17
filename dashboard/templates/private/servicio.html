@@ -1,0 +1,193 @@
+{% load static %}
+{% include 'private/header.html' %}
+
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="row">
+            <div class="col-12">
+                <div class="card shadow-lg border-0">
+                    <div class="card-body p-5">
+                        
+                        <!-- Encabezado -->
+                        <div class="text-center mb-5">
+                            <h1 class="display-4 font-weight-bold" style="color: #1a237e;">
+                                <i class="fas fa-wrench text-warning"></i> Nuestros Servicios
+                            </h1>
+                            <p class="text-muted lead">Conoce todos los servicios que ofrecemos para tu vehículo</p>
+                            <hr class="w-25 mx-auto" style="border-top: 3px solid #ffc107;">
+                        </div>
+
+                        <!-- Servicio 1: Alineación -->
+                        <div class="card shadow-sm mb-4 border-0">
+                            <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center" style="cursor: pointer;" onclick="toggleServicio('alineacion')">
+                                <h4 class="mb-0">
+                                    <i class="fas fa-car-side"></i> Alineación de Ruedas
+                                </h4>
+                                <span class="badge badge-light p-2"> Ver precios</span>
+                            </div>
+                            <div id="alineacion" style="display: none;">
+                                <div class="card-body">
+                                    <p class="text-muted">Alineación precisa para todo tipo de vehículos. Garantizamos el mejor rendimiento y durabilidad de tus neumáticos.</p>
+                                    <div class="table-responsive">
+                                        <table class="table table-hover table-bordered">
+                                            <thead class="thead-light">
+                                                <tr>
+                                                    <th>Tipo de Vehículo</th>
+                                                    <th>Precio</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr><td>🚗 Automóvil</td><td><strong>$10.00</strong></td></tr>
+                                                <tr><td>🚙 Camioneta</td><td><strong>$10.00</strong></td></tr>
+                                                <tr><td>🚐 Furgoneta</td><td><strong>$12.00</strong></td></tr>
+                                                <tr><td>🚛 Camión</td><td><strong>$15.00</strong></td></tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Servicio 2: Balanceo -->
+                        <div class="card shadow-sm mb-4 border-0">
+                            <div class="card-header bg-success text-white d-flex justify-content-between align-items-center" style="cursor: pointer;" onclick="toggleServicio('balanceo')">
+                                <h4 class="mb-0">
+                                    <i class="fas fa-balance-scale"></i> Balanceo de Ruedas
+                                </h4>
+                                <span class="badge badge-light p-2"> Ver precios</span>
+                            </div>
+                            <div id="balanceo" style="display: none;">
+                                <div class="card-body">
+                                    <p class="text-muted">Balanceo profesional para eliminar vibraciones y mejorar la estabilidad de tu vehículo.</p>
+                                    <div class="table-responsive">
+                                        <table class="table table-hover table-bordered">
+                                            <thead class="thead-light">
+                                                <tr>
+                                                    <th>Tipo de Vehículo</th>
+                                                    <th>Precio</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr><td>🚗 Automóvil</td><td><strong>$10.00</strong></td></tr>
+                                                <tr><td>🚙 Camioneta</td><td><strong>$10.00</strong></td></tr>
+                                                <tr><td>🚐 Furgoneta</td><td><strong>$12.00</strong></td></tr>
+                                                <tr><td>🚛 Camión</td><td><strong>$15.00</strong></td></tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Servicio 3: Alineación + Balanceo -->
+                        <div class="card shadow-sm mb-4 border-0">
+                            <div class="card-header bg-warning text-dark d-flex justify-content-between align-items-center" style="cursor: pointer;" onclick="toggleServicio('combo')">
+                                <h4 class="mb-0">
+                                    <i class="fas fa-object-group"></i> Alineación + Balanceo (Combo)
+                                </h4>
+                                <span class="badge badge-dark p-2"> Ver precios</span>
+                            </div>
+                            <div id="combo" style="display: none;">
+                                <div class="card-body">
+                                    <p class="text-muted">El paquete completo para un mantenimiento óptimo de tus neumáticos. ¡Ahorra con este combo!</p>
+                                    <div class="table-responsive">
+                                        <table class="table table-hover table-bordered">
+                                            <thead class="thead-light">
+                                                <tr>
+                                                    <th>Tipo de Vehículo</th>
+                                                    <th>Precio</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr><td>🚗 Automóvil</td><td><strong>$15.00</strong></td></tr>
+                                                <tr><td>🚙 Camioneta</td><td><strong>$17.00</strong></td></tr>
+                                                <tr><td>🚐 Furgoneta</td><td><strong>$20.00</strong></td></tr>
+                                                <tr><td>🚛 Camión</td><td><strong>$25.00</strong></td></tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Servicios Adicionales -->
+                        <div class="card shadow-sm mb-4 border-0">
+                            <div class="card-header bg-info text-white d-flex justify-content-between align-items-center" style="cursor: pointer;" onclick="toggleServicio('adicionales')">
+                                <h4 class="mb-0">
+                                    <i class="fas fa-plus-circle"></i> Servicios Adicionales
+                                </h4>
+                                <span class="badge badge-light p-2"> Ver precios</span>
+                            </div>
+                            <div id="adicionales" style="display: none;">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="card border-0 bg-light p-3 text-center">
+                                                <i class="fas fa-tools fa-2x text-primary"></i>
+                                                <h5>Enlantale</h5>
+                                                <p class="text-muted">$1.50</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="card border-0 bg-light p-3 text-center">
+                                                <i class="fas fa-wind fa-2x text-success"></i>
+                                                <h5>Nitrógeno</h5>
+                                                <p class="text-muted">$1.50</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="card border-0 bg-light p-3 text-center">
+                                                <i class="fas fa-patch fa-2x text-warning"></i>
+                                                <h5>Parches</h5>
+                                                <p class="text-muted">$1.00</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Correcciones -->
+                        <div class="card shadow-sm mb-4 border-0">
+                            <div class="card-header bg-danger text-white d-flex justify-content-between align-items-center" style="cursor: pointer;" onclick="toggleServicio('correcciones')">
+                                <h4 class="mb-0">
+                                    <i class="fas fa-arrows-alt"></i> Correcciones
+                                </h4>
+                                <span class="badge badge-light p-2"> Ver detalles</span>
+                            </div>
+                            <div id="correcciones" style="display: none;">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <ul class="list-group">
+                                                <li class="list-group-item"><i class="fas fa-arrow-left text-primary"></i> Delantera Izquierda</li>
+                                                <li class="list-group-item"><i class="fas fa-arrow-right text-primary"></i> Delantera Derecha</li>
+                                                <li class="list-group-item"><i class="fas fa-arrow-left text-warning"></i> Posterior Izquierda</li>
+                                                <li class="list-group-item"><i class="fas fa-arrow-right text-warning"></i> Posterior Derecha</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function toggleServicio(id) {
+        var elemento = document.getElementById(id);
+        if (elemento.style.display === 'none' || elemento.style.display === '') {
+            elemento.style.display = 'block';
+        } else {
+            elemento.style.display = 'none';
+        }
+    }
+</script>
+
+
+{% include 'private/footer.html' %} 

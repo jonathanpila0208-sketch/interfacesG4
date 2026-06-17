@@ -43,3 +43,6 @@ def dashboard(request):
 
 def recuperar(request):
     return render(request, 'recuperar.html')
+
+def servicio(request):
+    return render(request, 'private/servicio.html')
