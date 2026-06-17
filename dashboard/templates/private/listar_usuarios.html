@@ -32,8 +32,7 @@
                 <td>
                     <a href="{% url 'eliminar_usuario' usuario.id %}" class="btn btn-warning" onclick="return confirm('¿Estás seguro de que deseas eliminar este usuario?');">Editar</a>
                     <a href="{% url 'eliminar_usuario' usuario.id %}" class="btn btn-danger" onclick="return confirm('¿Estás seguro de que deseas eliminar este usuario?');">Eliminar</a>
-                    <a href="" class="btn btn-sm btn-secondary">Editar</a>
-                    <a href="{% url 'eliminar_usuario' usuario.id %}" class="btn btn-sm btn-danger" onclick="return confirm('¿Estás seguro de eliminar este usuario?');">Eliminar</a>
+                    
                 </td>
             </tr>
             {% endfor %}
