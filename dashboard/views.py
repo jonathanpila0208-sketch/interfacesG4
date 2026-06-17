@@ -58,7 +58,7 @@ def editar_usuario(request, id):#metodo editar
         #actualizar datos
         usuario.username=username
         usuario.email=email
-        usuario.password=password
+        usuario.set_password()=password
 
         usuario.save()
         messages.success(request, "El registro se ha actualizado correctamente")
