@@ -39,3 +39,12 @@ def eliminar_usuario(request, id):
     return redirect("listar_usuarios")
 
 def editar_usuario(request, id):#metodo editar
+    if request.method=='POST':
+        username = request.POST.get("")
+        email = request.POST.get("")
+        password = request.POST.get("")
+
+        #verificar si exitse el usuario
+        if User.objects.filter(username=username).exclude(id=id).exists():
+            messages.error(request,"El usuario ya esta registrado")
+            return render(request, "private/editar_usuario.html",{"usuario":usuario})
