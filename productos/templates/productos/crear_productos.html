@@ -1,4 +1,27 @@
 {%load static%}
 {%include 'private/header.html'%}
-<h5>Tus productos aqui</h5>
+<div class="container mt-4">
+    <h2>Inserta tus Productos</h2>
+    <br>
+    <form action="" method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="">Nombre Producto</label>
+            <input type="text" name="nombreProducto" class="form-control" required>
+
+            <label for="">Precio Producto</label>
+            <input type="number" name="precioProducto" class="form-control" required>
+
+            <label for="">Stock Producto</label>
+            <input type="number" name="stockProducto" class="form-control" required>
+
+            <label for="">Estado Producto</label>
+            <select name="estadoProducto" id="">
+                <option value="">Seleccione</option>
+                <option value="activo">Activo</option>
+                <option value="inactivo">Inactivo</option>
+            </select>
+        </div>
+    </form>
+</div>
 {%include 'private/footer.html'%}
