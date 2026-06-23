@@ -21,6 +21,10 @@
         <td>{{producto.stock_producto}}</td>
         <td>{{producto.estado_producto}}</td>
     </tr>
+    {% empty %}
+    <tr>
+        <td class="alert alert-danger">No se encuentran registros</td>
+    </tr>
     {% endfor %}
    </tbody>
 </table>
