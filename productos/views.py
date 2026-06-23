@@ -9,10 +9,10 @@ def listar_productos(request):
 
 def crear_productos(request):
     if request.method == "POST":
-        nombre_producto = request.POST.get("") #poner nombre del form
-        precio_producto = request.POST.get("")
-        stock_producto = request.POST.get("")
-        estado_producto = request.POST.get("")
+        nombre_producto = request.POST.get("nombreProducto") #poner nombre del form
+        precio_producto = request.POST.get("precioProducto")
+        stock_producto = request.POST.get("stockProducto")
+        estado_producto = request.POST.get("estadoProducto")
 
         Producto.objects.create(
             nombre_producto = nombre_producto,
