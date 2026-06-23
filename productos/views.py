@@ -1,8 +1,11 @@
 from django.shortcuts import redirect, render
 
+from productos.models import Producto
+
 # Create your views here.
 def listar_productos(request):
-    return render(request, "productos/listar_productos.html")
+    productos = Producto.objects.all()
+    return render(request, "productos/listar_productos.html", {'productos': productos})
 
 def crear_productos(request):
     if request.method == "POST":
