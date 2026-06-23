@@ -26,6 +26,10 @@
         <td>{{producto.precio_producto}}</td>
         <td>{{producto.stock_producto}}</td>
         <td>{{producto.estado_producto}}</td>
+        <td>
+            <a href="{% url 'editar_producto' producto.id %}" class="btn btn-sm btn-warning rounded-pill">Editar</a>
+            <a href="{% url 'eliminar_producto' producto.id %}" class="btn btn-sm btn-danger rounded-pill" onclick="return confirm('¿Estás seguro de eliminar este producto?');">Eliminar</a>
+        </td>
     </tr>
     {% empty %}
     <tr>
