@@ -1,3 +1,6 @@
+
+from pyexpat.errors import messages
+
 from django.shortcuts import redirect, render
 
 from productos.models import Producto
@@ -20,5 +23,16 @@ def crear_productos(request):
             stock_producto = stock_producto,
             estado_producto = estado_producto
         )
+        messages.success(request,"Producto agregado con éxito")
         return redirect('listar_productos')
     return render(request, 'productos/crear_productos.html')
+
+def eliminar_productos(request, id):
+    producto = Producto.objects.get(id=id)
+    producto.delete()
+    messages.success(request, "Producto eliminado")
+    return redirect("listar_productos")
+
+def editar_productos(request, id):
+    producto=Producto.objects.get(id=id)
+    
