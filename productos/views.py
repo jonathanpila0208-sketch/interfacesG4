@@ -1,5 +1,5 @@
 
-from pyexpat.errors import messages
+from django.contrib import messages
 
 from django.shortcuts import redirect, render
 
@@ -35,4 +35,14 @@ def eliminar_productos(request, id):
 
 def editar_productos(request, id):
     producto=Producto.objects.get(id=id)
-    
+
+    if request.method=="POST":
+        producto.nombre_producto = request.POST.get("")
+        producto.precio_producto = request.POST.get("")
+        producto.stock_producto = request.POST.get("")
+        producto.estado_producto = request.POST.get("")
+
+        producto.save()
+        messages.success(request, "Producto Actualizado")
+        return redirect("listar_productos")
+    return render(request, "productos/editar_producto.html", {"producto": producto})
