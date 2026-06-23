@@ -1,10 +1,12 @@
-{%load static%}
-{%include 'private/header.html'%}
+{% load static %}
+{% include 'private/header.html' %}
 
 <div class="container mt-4">
     <h2>Listado de Productos</h2>
     <br>
-    <a href="{% url 'crear_productos' %}" class="btn btn-success">Nuevo Producto</a>
+    <a href="{% url 'crear_productos' %}" class="btn btn-success">
+        Nuevo Producto
+    </a>
 </div>
 
 <table class="table table-bordered table-striped table-hover">
@@ -15,29 +17,38 @@
             <th>PRECIO</th>
             <th>STOCK</th>
             <th>ESTADO</th>
-
+            <th>ACCIONES</th>
         </tr>
     </thead>
-   <tbody>
-    {% for producto in productos %}
-     <tr>
-        <td>{{producto.id}}</td>
-        <td>{{producto.nombre_producto}}</td>
-        <td>{{producto.precio_producto}}</td>
-        <td>{{producto.stock_producto}}</td>
-        <td>{{producto.estado_producto}}</td>
-        <td>
-            <a href="{% url 'editar_producto' producto.id %}" class="btn btn-sm btn-warning rounded-pill">Editar</a>
-            <a href="{% url 'eliminar_producto' producto.id %}" class="btn btn-sm btn-danger rounded-pill" onclick="return confirm('¿Estás seguro de eliminar este producto?');">Eliminar</a>
-        </td>
-    </tr>
-    {% empty %}
-    <tr>
-        <td class="alert alert-danger">No se encuentran registros</td>
-    </tr>
-    {% endfor %}
-   </tbody>
+
+    <tbody>
+        {% for producto in productos %}
+        <tr>
+            <td>{{ producto.id }}</td>
+            <td>{{ producto.nombre_producto }}</td>
+            <td>{{ producto.precio_producto }}</td>
+            <td>{{ producto.stock_producto }}</td>
+            <td>{{ producto.estado_producto }}</td>
+            <td>
+                <a href="{% url 'editar_productos' producto.id %}" class="btn btn-sm btn-warning rounded-pill">
+                    Editar
+                </a>
+
+                <a href="{% url 'eliminar_producto' producto.id %}" class="btn btn-sm btn-danger rounded-pill"
+                    onclick="return confirm('¿Estás seguro de eliminar este producto?');">
+                    Eliminar
+                </a>
+            </td>
+        </tr>
+
+        {% empty %}
+        <tr>
+            <td colspan="6" class="alert alert-danger text-center">
+                No se encuentran registros
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
 </table>
 
-
-{%include 'private/footer.html'%}
+{% include 'private/footer.html' %}
