@@ -1,6 +1,13 @@
 {%load static%}
 {%include 'private/header.html'%}
-
-
+{% for producto in productos %}
+<tr>
+    <td>{{producto.id}}</td>
+    <td>{{producto.nombre_producto}}</td>
+    <td>{{producto.precio_producto}}</td>
+    <td>{{producto.stock_producto}}</td>
+    <td>{{producto.estado_producto}}</td>
+</tr>
+{% endfor %}
 
 {%include 'private/footer.html'%}
