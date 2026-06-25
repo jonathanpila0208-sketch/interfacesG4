@@ -1,6 +1,43 @@
-{%load static%}
-{%include 'private/header.html'%}
-<h5>EDITA TUS PRODUCTOS</h5>
+{% load static %}
+{% include 'private/header.html' %}
 
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="container mt-4">
+            <h1 class="mb-4">Editar Producto</h1>
 
-{%include 'private/footer.html'%}
+            {% if messages %}
+            {% for message in messages %}
+            <div class="alert alert-danger">{{ message }}</div>
+            {% endfor %}
+            {% endif %}
+
+            <form action="" method="post">
+                {% csrf_token %}
+                <div class="form-group mb-3">
+                    <label for="nombreProducto">Nuevo Producto</label>
+                    <input type="text" name="nombreProductoEdit" class="form-control" value="{{ producto.nombre_producto }}" required>
+                </div>
+                <div class="form-group mb-3">
+                    <label for="precioProducto">Nuevo Precio</label>
+                    <input type="number" name="precioProductoEdit" class="form-control" value="{{ producto.precio_producto }}" required>
+                </div>
+                <div class="form-group mb-3">
+                    <label for="stockProducto">Nuevo Stock</label>
+                    <input type="number" name="stockProductoEdit" class="form-control" value="{{ producto.stock_producto }}" required>
+                </div>
+                 <div class="form-group mb-3">
+                    <label for="estadoProducto">Nuevo Estado</label>
+                    <select name="estadoProductoEdit" id="" class="form-control" value="{{ producto.estado_producto }}" required>
+                        <option value="activo">Activo</option>
+                        <option value="inactivo">Inactivo</option>
+                    </select>
+                </div>
+                <button class="btn btn-warning rounded-pill">GUARDAR</button>
+                <a href="{% url 'listar_productos' %}" class="btn btn-danger rounded-pill">CANCELAR</a>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% include 'private/footer.html' %}

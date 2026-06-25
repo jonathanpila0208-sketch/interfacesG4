@@ -37,10 +37,10 @@ def editar_productos(request, id):
     producto=Producto.objects.get(id=id)
 
     if request.method=="POST":
-        producto.nombre_producto = request.POST.get("")
-        producto.precio_producto = request.POST.get("")
-        producto.stock_producto = request.POST.get("")
-        producto.estado_producto = request.POST.get("")
+        producto.nombre_producto = request.POST.get("nombreProductoEdit")
+        producto.precio_producto = request.POST.get("precioProductoEdit")
+        producto.stock_producto = request.POST.get("stockProductoEdit")
+        producto.estado_producto = request.POST.get("estadoProductoEdit")
 
         producto.save()
         messages.success(request, "Producto Actualizado")
