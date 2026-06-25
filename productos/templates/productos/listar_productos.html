@@ -3,7 +3,18 @@
 
 <div class="container mt-4">
     <h2>Listado de Productos</h2>
+
+    {% if messages %}
+        {% for message in messages %}
+            <div id="mensaje-alerta"
+                 class="alert alert-{{ message.tags }} text-center">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+
     <br>
+
     <a href="{% url 'crear_productos' %}" class="btn btn-success">
         Nuevo Producto
     </a>
@@ -30,12 +41,14 @@
             <td>{{ producto.stock_producto }}</td>
             <td>{{ producto.estado_producto }}</td>
             <td>
-                <a href="{% url 'editar_productos' producto.id %}" class="btn btn-sm btn-warning rounded-pill">
+                <a href="{% url 'editar_productos' producto.id %}"
+                   class="btn btn-sm btn-warning rounded-pill">
                     Editar
                 </a>
 
-                <a href="{% url 'eliminar_producto' producto.id %}" class="btn btn-sm btn-danger rounded-pill"
-                    onclick="return confirm('¿Estás seguro de eliminar este producto?');">
+                <a href="{% url 'eliminar_producto' producto.id %}"
+                   class="btn btn-sm btn-danger rounded-pill"
+                   onclick="return confirm('¿Estás seguro de eliminar este producto?');">
                     Eliminar
                 </a>
             </td>
@@ -50,5 +63,14 @@
         {% endfor %}
     </tbody>
 </table>
+
+<script>
+    setTimeout(function() {
+        let alerta = document.getElementById("mensaje-alerta");
+        if (alerta) {
+            alerta.style.display = "none";
+        }
+    }, 5000);
+</script>
 
 {% include 'private/footer.html' %}

@@ -30,7 +30,7 @@ def registrar_clientes(request):
         messages.success(request, "Cliente agregado con éxito")
         return redirect('listar_clientes')
 
-    return render(request, 'clientes/crear_clientes.html')
+    return render(request, 'clientes/registrar_clientes.html')
 
 
 def eliminar_clientes(request, id):
@@ -59,6 +59,6 @@ def editar_clientes(request, id):
 
     return render(
         request,
-        "clientes/editar_cliente.html",
+        "clientes/editar_clientes.html",
         {"cliente": cliente}
     )

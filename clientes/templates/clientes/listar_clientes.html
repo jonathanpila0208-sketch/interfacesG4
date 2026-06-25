@@ -3,7 +3,18 @@
 
 <div class="container mt-4">
     <h2>Listado de Clientes</h2>
+
+    {% if messages %}
+        {% for message in messages %}
+            <div id="mensaje-alerta"
+                 class="alert alert-{{ message.tags }} text-center">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+
     <br>
+
     <a href="{% url 'registrar_clientes' %}" class="btn btn-success">
         Nuevo Cliente
     </a>
@@ -56,5 +67,14 @@
         {% endfor %}
     </tbody>
 </table>
+
+<script>
+    setTimeout(function() {
+        let alerta = document.getElementById("mensaje-alerta");
+        if (alerta) {
+            alerta.style.display = "none";
+        }
+    }, 5000);
+</script>
 
 {% include 'private/footer.html' %}
