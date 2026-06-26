@@ -1,103 +1,26 @@
 {% load static %}
 {% include 'private/header.html' %}
-<div class="container-fluid">
-    <div class="page-header">
+
+<div class="container-fluid px-4 mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
         <h1>Orden de Trabajo</h1>
-        <a href="{% url 'guardar_orden' %}" class="btn btn-primary">
+        <a href="{% url 'nueva_orden' %}" class="btn btn-primary">
             <i class="fas fa-plus"></i> Nueva Orden
         </a>
     </div>
 
-    <!-- Formulario para crear orden (oculto inicialmente) -->
-    <div id="formulario-orden" style="display: none; background: white; padding: 20px; border-radius: 8px; margin: 20px 0; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
-        <h3><i class="fas fa-pen"></i> Crear Nueva Orden de Trabajo</h3>
-        <form id="ordenForm" method="POST">
-            {% csrf_token %}
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label>Cliente:</label>
-                        <select class="form-control" required>
-                            <option value="">Seleccionar cliente</option>
-                            <option value="1">Juan Pérez</option>
-                            <option value="2">María García</option>
-                            <option value="3">Carlos López</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label>Vehículo:</label>
-                        <input type="text" class="form-control" placeholder="Ej: Toyota Corolla" required>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label>Placa:</label>
-                        <input type="text" class="form-control" placeholder="ABC-123" required>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label>Fecha de entrega:</label>
-                        <input type="date" class="form-control" required>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label>Estado:</label>
-                        <select class="form-control">
-                            <option value="pendiente">Pendiente</option>
-                            <option value="en_proceso">En Proceso</option>
-                            <option value="completado">Completado</option>
-                            <option value="cancelado">Cancelado</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-            <div class="form-group">
-                <label>Descripción del trabajo:</label>
-                <textarea class="form-control" rows="3" placeholder="Detalles del servicio a realizar..." required></textarea>
-            </div>
-            <div class="form-group">
-                <label>Productos/Servicios:</label>
-                <div class="items-lista">
-                    <div class="item-row">
-                        <select class="form-control" style="display: inline-block; width: 40%;">
-                            <option value="">Seleccionar producto</option>
-                            <option value="1">Cambio de aceite - $45.00</option>
-                            <option value="2">Frenos - $80.00</option>
-                            <option value="3">Alineación - $60.00</option>
-                            <option value="4">Lavado - $25.00</option>
-                        </select>
-                        <input type="number" class="form-control" placeholder="Cantidad" style="display: inline-block; width: 15%;">
-                        <input type="number" class="form-control" placeholder="Precio" style="display: inline-block; width: 20%;">
-                        <button type="button" class="btn btn-success" onclick="agregarItem()">
-                            <i class="fas fa-plus"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <div class="form-actions">
-                <button type="submit" class="btn btn-success">
-                    <i class="fas fa-save"></i> Guardar Orden
-                </button>
-                <button type="button" class="btn btn-danger" onclick="ocultarFormulario()">
-                    <i class="fas fa-times"></i> Cancelar
-                </button>
-            </div>
-        </form>
-    </div>
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+        {% endfor %}
+    {% endif %}
 
-    <!-- Tabla de órdenes -->
     <div class="table-responsive">
         <table class="table table-bordered table-hover">
             <thead class="thead-dark">
                 <tr>
                     <th>Código</th>
-                    <th>Cliente</th>
+                    <th>Nombre</th>
                     <th>Vehículo</th>
                     <th>Placa</th>
                     <th>Estado</th>
@@ -107,93 +30,39 @@
                 </tr>
             </thead>
             <tbody>
+                {% for orden in ordenes %}
                 <tr>
-                    <td><strong>OT-001</strong></td>
-                    <td>Juan Pérez</td>
-                    <td>Toyota Corolla</td>
-                    <td>ABC-123</td>
-                    <td><span class="badge badge-warning">Pendiente</span></td>
-                    <td>25/06/2026</td>
-                    <td>$150.00</td>
+                    <td><strong>{{ orden.numero_orden }}</strong></td>
+                    <td>{{ orden.nombre }}</td>
+                    <td>{{ orden.marca }} {{ orden.tipo_vehiculo }}</td>
+                    <td>{{ orden.placas }}</td>
+                    <td><span class="badge badge-warning">{{ orden.get_estado_display }}</span></td>
+                    <td>{{ orden.fecha_creacion|date:"d/m/Y" }}</td>
+                    <td>${{ orden.total }}</td>
                     <td>
-                        <a href="#" class="btn btn-sm btn-info" title="Ver">
+                        <a href="{% url 'ver_orden' orden.id %}" class="btn btn-sm btn-info" title="Ver">
                             <i class="fas fa-eye"></i>
                         </a>
-                        <a href="#" class="btn btn-sm btn-warning" title="Editar">
+                        <a href="{% url 'editar_orden' orden.id %}" class="btn btn-sm btn-warning" title="Editar">
                             <i class="fas fa-edit"></i>
                         </a>
-                        <a href="#" class="btn btn-sm btn-danger" title="Eliminar" onclick="return confirm('¿Eliminar esta orden?')">
+                        <a href="{% url 'eliminar_orden' orden.id %}" class="btn btn-sm btn-danger" title="Eliminar"
+                            onclick="return confirm('¿Eliminar esta orden?')">
                             <i class="fas fa-trash"></i>
                         </a>
-                        <a href="#" class="btn btn-sm btn-success" title="Comprobante">
+                        <a href="{% url 'comprobante_servicio' %}" class="btn btn-sm btn-success" title="Comprobante">
                             <i class="fas fa-file-invoice"></i>
                         </a>
                     </td>
                 </tr>
+                {% empty %}
                 <tr>
-                    <td><strong>OT-002</strong></td>
-                    <td>María García</td>
-                    <td>Honda Civic</td>
-                    <td>XYZ-789</td>
-                    <td><span class="badge badge-info">En Proceso</span></td>
-                    <td>24/06/2026</td>
-                    <td>$320.00</td>
-                    <td>
-                        <a href="#" class="btn btn-sm btn-info" title="Ver">
-                            <i class="fas fa-eye"></i>
-                        </a>
-                        <a href="#" class="btn btn-sm btn-warning" title="Editar">
-                            <i class="fas fa-edit"></i>
-                        </a>
-                        <a href="#" class="btn btn-sm btn-danger" title="Eliminar" onclick="return confirm('¿Eliminar esta orden?')">
-                            <i class="fas fa-trash"></i>
-                        </a>
-                        <a href="#" class="btn btn-sm btn-success" title="Comprobante">
-                            <i class="fas fa-file-invoice"></i>
-                        </a>
-                    </td>
+                    <td colspan="8" class="text-center">No hay órdenes registradas.</td>
                 </tr>
-                <tr>
-                    <td><strong>OT-003</strong></td>
-                    <td>Carlos López</td>
-                    <td>Nissan Sentra</td>
-                    <td>DEF-456</td>
-                    <td><span class="badge badge-success">Completado</span></td>
-                    <td>23/06/2026</td>
-                    <td>$450.00</td>
-                    <td>
-                        <a href="#" class="btn btn-sm btn-info" title="Ver">
-                            <i class="fas fa-eye"></i>
-                        </a>
-                        <a href="#" class="btn btn-sm btn-warning" title="Editar">
-                            <i class="fas fa-edit"></i>
-                        </a>
-                        <a href="#" class="btn btn-sm btn-danger" title="Eliminar" onclick="return confirm('¿Eliminar esta orden?')">
-                            <i class="fas fa-trash"></i>
-                        </a>
-                        <a href="#" class="btn btn-sm btn-success" title="Comprobante">
-                            <i class="fas fa-file-invoice"></i>
-                        </a>
-                    </td>
-                </tr>
+                {% endfor %}
             </tbody>
         </table>
     </div>
 </div>
 
-<script>
-    function mostrarFormulario() {
-        document.getElementById('formulario-orden').style.display = 'block';
-        document.getElementById('formulario-orden').scrollIntoView({ behavior: 'smooth' });
-    }
-    
-    function ocultarFormulario() {
-        document.getElementById('formulario-orden').style.display = 'none';
-    }
-    
-    function agregarItem() {
-        // Aquí puedes agregar lógica para añadir más productos
-        alert('Funcionalidad para agregar productos al servicio');
-    }
-</script>
-{% include 'private/footer.html' %} 
+{% include 'private/footer.html' %}

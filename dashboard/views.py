@@ -74,7 +74,6 @@ def nueva_orden(request):
             marca=request.POST.get('marca'),
             placas=request.POST.get('placas'),
             telefono=request.POST.get('telefono'),
-            total=request.POST.get('total') or 0,
             estado=request.POST.get('estado', 'pendiente'),
             otros=request.POST.get('otros', ''),
         )
