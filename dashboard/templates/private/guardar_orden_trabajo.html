@@ -1,0 +1,238 @@
+{% load static %}
+{% include 'private/header.html' %}
+
+<div class="container-fluid px-4 mt-4">
+    <div class="card">
+        <div class="card-header bg-dark text-white">
+            <h5 class="mb-0"><i class="fas fa-pen"></i> ALINEACIÓN TOTAL — Orden de Trabajo</h5>
+        </div>
+        <div class="card-body">
+            <form method="POST" action="{% url 'guardar_orden' %}">
+                {% csrf_token %}
+
+                <!-- Cabecera -->
+                <div class="row border-bottom pb-2 mb-3">
+                    <div class="col-md-4">
+                        <label>Orden de Trabajo N°:</label>
+                        <input type="text" class="form-control" name="numero_orden" placeholder="OT-001">
+                    </div>
+                    <div class="col-md-4">
+                        <label>Nombre:</label>
+                        <input type="text" class="form-control" name="nombre" placeholder="Nombre del cliente">
+                    </div>
+                </div>
+
+                <div class="row border-bottom pb-2 mb-3">
+                    <div class="col-md-3">
+                        <label>Fecha:</label>
+                        <input type="date" class="form-control" name="fecha">
+                    </div>
+                    <div class="col-md-3">
+                        <label>Clave:</label>
+                        <input type="text" class="form-control" name="clave">
+                    </div>
+                    <div class="col-md-3">
+                        <label>País:</label>
+                        <input type="text" class="form-control" name="pais" value="Ecuador">
+                    </div>
+                    <div class="col-md-3">
+                        <label>Año:</label>
+                        <input type="text" class="form-control" name="anio" placeholder="2026">
+                    </div>
+                </div>
+
+                <!-- Vehículo -->
+                <div class="row border-bottom pb-2 mb-3">
+                    <div class="col-md-2">
+                        <label>Tipo de Vehículo:</label>
+                        <select class="form-control" name="tipo_vehiculo">
+                            <option value="automovil">Automóvil</option>
+                            <option value="camioneta">Camioneta</option>
+                            <option value="suv">SUV</option>
+                            <option value="furgoneta">Furgoneta</option>
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+                        <label>Marca:</label>
+                        <input type="text" class="form-control" name="marca" placeholder="Toyota">
+                    </div>
+                    <div class="col-md-2">
+                        <label>Placas:</label>
+                        <input type="text" class="form-control" name="placas" placeholder="ABC-123">
+                    </div>
+                    <div class="col-md-2">
+                        <label>Color:</label>
+                        <input type="text" class="form-control" name="color" placeholder="Rojo">
+                    </div>
+                    <div class="col-md-2">
+                        <label>N° Teléfono:</label>
+                        <input type="text" class="form-control" name="telefono" placeholder="0999999999">
+                    </div>
+                    <div class="col-md-2">
+                        <label>Total:</label>
+                        <input type="text" class="form-control" name="total_vehiculo" placeholder="$0.00">
+                    </div>
+                </div>
+
+                <!-- Servicios -->
+                <h6 class="font-weight-bold mt-3">Servicios</h6>
+                <table class="table table-bordered table-sm">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Servicio</th>
+                            <th>Detalle</th>
+                            <th>Precio</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Alineación -->
+                        <tr>
+                            <td rowspan="4"><strong>Alineación</strong></td>
+                            <td>Automóvil</td>
+                            <td>$10</td>
+                            <td><input type="number" class="form-control form-control-sm" name="alin_automovil" placeholder="0"></td>
+                        </tr>
+                        <tr>
+                            <td>Camioneta</td>
+                            <td>$10</td>
+                            <td><input type="number" class="form-control form-control-sm" name="alin_camioneta" placeholder="0"></td>
+                        </tr>
+                        <tr>
+                            <td>Furgoneta</td>
+                            <td>$12</td>
+                            <td><input type="number" class="form-control form-control-sm" name="alin_furgoneta" placeholder="0"></td>
+                        </tr>
+                        <tr>
+                            <td>Camión</td>
+                            <td>$15</td>
+                            <td><input type="number" class="form-control form-control-sm" name="alin_camion" placeholder="0"></td>
+                        </tr>
+
+                        <!-- Balanceo -->
+                        <tr>
+                            <td rowspan="4"><strong>Balanceo individual por neumático</strong></td>
+                            <td>Automóvil (1 neum: $2 / 2: $4 / 3: $6 / 4: $8)</td>
+                            <td>$2 c/u</td>
+                            <td><input type="number" class="form-control form-control-sm" name="bal_automovil" placeholder="0"></td>
+                        </tr>
+                        <tr>
+                            <td>Camioneta (1 neum: $2,50 / 2: $5 / 3: $7,50 / 4: $10)</td>
+                            <td>$2,50 c/u</td>
+                            <td><input type="number" class="form-control form-control-sm" name="bal_camioneta" placeholder="0"></td>
+                        </tr>
+                        <tr>
+                            <td>Furgoneta (1 neum: $2,50 / 2: $5 / 3: $7,50 / 4: $10)</td>
+                            <td>$2,50 c/u</td>
+                            <td><input type="number" class="form-control form-control-sm" name="bal_furgoneta" placeholder="0"></td>
+                        </tr>
+                        <tr>
+                            <td>Camión (1 neum: $3 / 2: $6 / 3: $9 / 4: $12)</td>
+                            <td>$3 c/u</td>
+                            <td><input type="number" class="form-control form-control-sm" name="bal_camion" placeholder="0"></td>
+                        </tr>
+
+                        <!-- Combo -->
+                        <tr>
+                            <td rowspan="4"><strong>Combo Alineación + Balanceo</strong></td>
+                            <td>Automóvil</td>
+                            <td>$15</td>
+                            <td><input type="number" class="form-control form-control-sm" name="combo_automovil" placeholder="0"></td>
+                        </tr>
+                        <tr>
+                            <td>Camioneta</td>
+                            <td>$17</td>
+                            <td><input type="number" class="form-control form-control-sm" name="combo_camioneta" placeholder="0"></td>
+                        </tr>
+                        <tr>
+                            <td>Furgoneta</td>
+                            <td>$20</td>
+                            <td><input type="number" class="form-control form-control-sm" name="combo_furgoneta" placeholder="0"></td>
+                        </tr>
+                        <tr>
+                            <td>Camión</td>
+                            <td>$25</td>
+                            <td><input type="number" class="form-control form-control-sm" name="combo_camion" placeholder="0"></td>
+                        </tr>
+
+                        <!-- Enllantaje -->
+                        <tr>
+                            <td><strong>Enllantaje</strong></td>
+                            <td>1 neum: $1,5 / 2: $3 / 3: $4,5 / 4: $6</td>
+                            <td>$1,5 c/u</td>
+                            <td><input type="number" class="form-control form-control-sm" name="enllantaje" placeholder="0"></td>
+                        </tr>
+
+                        <!-- Nitrógeno -->
+                        <tr>
+                            <td><strong>Nitrógeno</strong></td>
+                            <td>1 neum: $1,5 / 3: $4,5</td>
+                            <td>$1,5 c/u</td>
+                            <td><input type="number" class="form-control form-control-sm" name="nitrogeno" placeholder="0"></td>
+                        </tr>
+
+                        <!-- Parches -->
+                        <tr>
+                            <td><strong>Parches</strong></td>
+                            <td>#1: $2 / #2: $3 / #3: $4</td>
+                            <td>Según tipo</td>
+                            <td><input type="number" class="form-control form-control-sm" name="parches" placeholder="0"></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <!-- Correcciones -->
+                <h6 class="font-weight-bold mt-3">Correcciones</h6>
+                <div class="row mb-3">
+                    <div class="col-md-3">
+                        <label>Delantera Izquierda:</label>
+                        <input type="text" class="form-control" name="corr_del_izq">
+                    </div>
+                    <div class="col-md-3">
+                        <label>Delantera Derecha:</label>
+                        <input type="text" class="form-control" name="corr_del_der">
+                    </div>
+                    <div class="col-md-3">
+                        <label>Posterior Izquierda:</label>
+                        <input type="text" class="form-control" name="corr_post_izq">
+                    </div>
+                    <div class="col-md-3">
+                        <label>Posterior Derecha:</label>
+                        <input type="text" class="form-control" name="corr_post_der">
+                    </div>
+                </div>
+
+                <!-- Otros -->
+                <div class="form-group mb-3">
+                    <label>Otros:</label>
+                    <textarea class="form-control" name="otros" rows="3"></textarea>
+                </div>
+
+                <!-- Pie -->
+                <div class="row border-top pt-3">
+                    <div class="col-md-4">
+                        <label>Llamadas de seguimiento:</label>
+                        <input type="text" class="form-control" name="llamadas">
+                    </div>
+                    <div class="col-md-4 offset-md-4">
+                        <label>Valor Transferencia:</label>
+                        <input type="text" class="form-control" name="valor_transferencia" placeholder="$0.00">
+                    </div>
+                </div>
+
+                <!-- Botones -->
+                <div class="mt-4">
+                    <button type="submit" class="btn btn-success">
+                        <i class="fas fa-save"></i> Guardar Orden
+                    </button>
+                    <a href="{% url 'orden_trabajo' %}" class="btn btn-danger">
+                        <i class="fas fa-times"></i> Cancelar
+                    </a>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+{% include 'private/footer.html' %}
