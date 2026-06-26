@@ -62,3 +62,40 @@ def editar_usuario(request, id):
         return redirect("listar_usuarios")
 
     return render(request, "private/editar_usuario.html", {"usuario": usuario})
+
+def orden_trabajo(request):
+    """
+    Vista para la página de Orden de Trabajo
+    """
+    # Aquí puedes agregar lógica para obtener datos de la base de datos
+    # Por ahora solo renderiza la página
+    contexto = {
+        'titulo': 'Orden de Trabajo',
+        # 'ordenes': OrdenTrabajo.objects.all(),  # Cuando tengas el modelo
+    }
+    return render(request, 'private/orden_trabajo.html', contexto)
+
+def comprobante_servicio(request):
+    """
+    Vista para la página de Comprobante de Servicio
+    """
+    contexto = {
+        'titulo': 'Comprobante de Servicio',
+        # 'comprobantes': Comprobante.objects.all(),  # Cuando tengas el modelo
+    }
+    return render(request, 'private/comprobante_servicio.html', contexto)
+
+
+def guardar_orden_trabajo(request):
+
+    if request.method == 'POST':
+        messages.success(request, "Orden de trabajo creada con éxito")
+        return redirect('orden_trabajo')
+    return redirect('orden_trabajo')
+
+def guardar_comprobante(request):
+
+    if request.method == 'POST':
+        messages.success(request, "Comprobante generado con éxito")
+        return redirect('comprobante_servicio')
+    return redirect('comprobante_servicio')
