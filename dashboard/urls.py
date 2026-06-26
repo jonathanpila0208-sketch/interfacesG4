@@ -10,7 +10,11 @@ urlpatterns = [
     path('eliminar_usuario/<int:id>/', views.eliminar_usuario, name='eliminar_usuario'),
     path('editar_usuario/<int:id>/', views.editar_usuario, name='editar_usuario'),
     path('orden-trabajo/', views.orden_trabajo, name='orden_trabajo'),
+    path('orden-trabajo/', views.orden_trabajo, name='orden_trabajo'),
+    path('orden-trabajo/nueva/', views.nueva_orden, name='nueva_orden'),
+    path('orden-trabajo/ver/<int:id>/', views.ver_orden, name='ver_orden'),
+    path('orden-trabajo/editar/<int:id>/', views.editar_orden, name='editar_orden'),
+    path('orden-trabajo/eliminar/<int:id>/', views.eliminar_orden, name='eliminar_orden'),
     path('comprobante/', views.comprobante_servicio, name='comprobante_servicio'),
-    path('guardar-orden/', views.guardar_orden_trabajo, name='guardar_orden'),
     path('guardar-comprobante/', views.guardar_comprobante, name='guardar_comprobante'),
 ]
