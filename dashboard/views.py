@@ -79,11 +79,10 @@ def comprobante_servicio(request):
 
 
 def guardar_orden_trabajo(request):
-
     if request.method == 'POST':
         messages.success(request, "Orden de trabajo creada con éxito")
         return redirect('orden_trabajo')
-    return redirect('orden_trabajo')
+    return render(request, 'private/guardar_orden_trabajo.html')
 
 def guardar_comprobante(request):
 
