@@ -1,0 +1,43 @@
+{% load static %}
+{% include 'private/header.html' %}
+<div class="container mt-4">
+    <h2>Listado de Citas</h2>
+    <a href="{% url 'registrar_cita' %}" class="btn btn-success mb-3">+ Nueva Cita</a>
+
+    <table class="table table-bordered table-striped table-hover">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>CLIENTE</th>
+                <th>SERVICIO</th>
+                <th>FECHA</th>
+                <th>HORA</th>
+                <th>ESTADO</th>
+                <th>ACCIONES</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for cita in citas %}
+            <tr>
+                <td>{{ cita.id }}</td>
+                <td>{{ cita.cliente }}</td>
+                <td>{{ cita.servicio }}</td>
+                <td>{{ cita.fecha }}</td>
+                <td>{{ cita.hora }}</td>
+                <td>{{ cita.estado }}</td>
+                <td>
+                    <a href="{% url 'editar_cita' cita.id %}" class="btn btn-sm btn-warning rounded-pill">
+                        Editar
+                    </a>
+                    <a href="{% url 'eliminar_cita' cita.id %}"
+                       class="btn btn-sm btn-danger rounded-pill"
+                       onclick="return confirm('¿Estás seguro de eliminar esta cita?');">
+                        Eliminar
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% include 'private/footer.html' %}

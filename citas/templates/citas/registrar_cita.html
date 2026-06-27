@@ -1,0 +1,35 @@
+{% load static %}
+{% include 'private/header.html' %}
+<div class="container mt-4">
+    <h2>Registrar Cita</h2>
+    <form method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label class="form-label">Cliente</label>
+            {{ form.cliente }}
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Servicio</label>
+            {{ form.servicio }}
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Fecha</label>
+            {{ form.fecha }}
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Hora</label>
+            {{ form.hora }}
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Estado</label>
+            {{ form.estado }}
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Observaciones</label>
+            {{ form.observaciones }}
+        </div>
+        <button type="submit" class="btn btn-success">Guardar</button>
+        <a href="{% url 'listar_citas' %}" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+{% include 'private/footer.html' %}
